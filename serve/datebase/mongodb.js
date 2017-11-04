@@ -20,7 +20,7 @@ var insertData = function(db, callback,someData) {
 }
  
 
-function insert(someData){
+function insertAccount(someData){
     MongoClient.connect(DB_CONN_STR, function(err, db) {
         console.log("连接成功！");
         insertData(db, function(result) {
@@ -32,5 +32,5 @@ function insert(someData){
 }
 
 module.exports = {
-    insert
+    insertAccount
 }

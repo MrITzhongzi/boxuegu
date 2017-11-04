@@ -5,19 +5,20 @@ $(function(){
         var pwd = $('#password').val()
 
         $.ajax({
-            type: "post",
+            type: "get",
             url: "http://127.0.0.1:3000",
             data: {
                 "username": username,
-                "password": pwd
+                "password": pwd,
+                "method": "get"
             },
-            dataType: "json",
+            dataType: "text",
             error: function(err){
                 console.log('err')
             },
-            success: function (response) {
-                console.log(response)
+            success: function (data) {
+                console.log(data)
             }
-        });
+        })
     })
 })
