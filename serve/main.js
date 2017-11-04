@@ -45,7 +45,7 @@ var server = http.createServer(function (request, response) {
     response.setHeader('Access-Control-Allow-Origin', '*') //允许所有人访问(访问的人就不用跨域了)
     // response.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5000')  //允许某个  ip 可以跨域
 
-    // response.write('this is a demo')  //返回前台的数据 用 write
+    response.write('register success')  //返回前台的数据 用 write、 
     response.end()
 })
 
