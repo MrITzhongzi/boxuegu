@@ -6,6 +6,20 @@ function objToArr(obj) {
     return arr
 }
 
-changeAO.objToArr = objToArr
+function arrToObj(propertyName,arr) {
+    var obj = {}
+    obj[propertyName] = arr
+    return obj
+}
+
+function arrToString (arr){
+
+}
+
+changeAO = {
+    objToArr,
+    arrToObj,
+    arrToString
+}
 
 module.exports = changeAO

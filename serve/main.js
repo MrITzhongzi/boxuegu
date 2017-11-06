@@ -36,17 +36,18 @@ var server = http.createServer(function (request, response) {
         password: url.parse(request.url, true).query.password
     }
     
-    if(urlParam.username !== '' || urlParam.password !== '') { 
+    if(urlParam.username !== '' || urlParam.password !== '') {
+         
         var arrParams = arrAndObj.objToArr(urlParam)
-        console.dir(arrParams)
-        mongodb.insertAccount(arrParams)
-    }
-    
-    response.setHeader('Access-Control-Allow-Origin', '*') //允许所有人访问(访问的人就不用跨域了)
-    // response.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5000')  //允许某个  ip 可以跨域
+        // mongodb.insertAccount(arrParams)
+        mongodb.findAllData(function(arrayData){ 
+            response.setHeader('Access-Control-Allow-Origin', '*') //允许所有人访问(访问的人就不用跨域了)
+            // response.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5000')  //允许某个  ip 可以跨域
 
-    response.write('register success')  //返回前台的数据 用 write、 
-    response.end()
+            response.write(JSON.stringify(arrayData))  //返回前台的数据 用 write、 
+            response.end()
+        }) //查询所有数据
+    }
 })
 
 server.listen(port,'127.0.0.1',function(){
