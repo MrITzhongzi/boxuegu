@@ -1,14 +1,20 @@
-$(function () {
+$(function(){
 
-    $('#login').click(function () {
+
+    $('#register').click(function () {
         var username = $('#username').val()
         var pwd = $('#password').val()
+        var rePwd = $('#repassword').val()
 
-        if(username == '' || pwd == ''){  
-            alert('用户名或密码不能为空')
-            return 
+        if(!username || !pwd || !rePwd ){
+            alert("用户名密码不能为空")
+            return
         }
-
+        if(pwd != rePwd) {
+            alert('两次输入的密码不相等')
+            return
+        }
+       
         $.ajax({
             type: "get",
             url: "http://127.0.0.1:3000",
@@ -17,24 +23,21 @@ $(function () {
                 "password": pwd,
                 "method": "get"
             },
-            dataType: "json",
+            // dataType: "json",
             error: function (err) {
                 console.log('err')
             },
             success: function (data) {
 
                 if (changeAccountExist(data, username, pwd)) {
-                    alert("登录成功")
+                    alert("账号已经存在")
                 } else {
-                    alert("账号不存在")
+                    alert("注册成功")
+                    window.location.href="./login.html"
                 }
 
             }
         })
-    })
-
-    $('.register').click(function(){
-        
     })
 
     function changeAccountExist(arr, username, pwd) {

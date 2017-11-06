@@ -17,11 +17,11 @@ var insertData = function(db, callback,someData) {
         callback(result);
     });
 }
-function insertAccount(someData){
+function insertAccount(someData,callback){
     MongoClient.connect(DB_CONN_STR, function(err, db) {
         console.log("连接成功！");
         insertData(db, function(result) {
-            console.log(result);
+            callback(true);
             db.close();
         },someData);
     })
