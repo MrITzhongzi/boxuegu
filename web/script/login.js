@@ -8,7 +8,7 @@ $(function () {
             alert('用户名或密码不能为空')
             return 
         }
-
+        
         $.ajax({
             type: "get",
             url: "http://127.0.0.1:3000",
@@ -25,16 +25,13 @@ $(function () {
 
                 if (changeAccountExist(data, username, pwd)) {
                     alert("登录成功")
+                    window.location.href = './yibiaopan.html'
                 } else {
                     alert("账号不存在")
                 }
 
             }
         })
-    })
-
-    $('.register').click(function(){
-        
     })
 
     function changeAccountExist(arr, username, pwd) {
