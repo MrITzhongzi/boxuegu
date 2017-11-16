@@ -23,31 +23,21 @@ $(function(){
                 "password": pwd,
                 "method": "get"
             },
-            // dataType: "json",
+            dataType: "json",
             error: function (err) {
                 console.log('err')
             },
             success: function (data) {
-
-                if (changeAccountExist(data, username, pwd)) {
+                console.log(data)
+                if (data.Code == "2") {
                     alert("账号已经存在")
                 } else {
                     alert("注册成功")
-                    window.location.href="./login.html"
+                    window.location.href = data.pageUrl
                 }
 
             }
         })
     })
-
-    function changeAccountExist(arr, username, pwd) {
-        var flag = false
-        for (var i = 0; i < arr.length; i++) {
-            if (arr[i].username == username && arr[i].password == pwd) {
-                flag = true
-            }
-        }
-        return flag
-    }
 
 })

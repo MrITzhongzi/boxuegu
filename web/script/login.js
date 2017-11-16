@@ -22,10 +22,9 @@ $(function () {
                 console.log('err')
             },
             success: function (data) {
-
-                if (changeAccountExist(data, username, pwd)) {
-                    alert("登录成功")
-                    window.location.href = './yibiaopan.html'
+                console.log(data)
+                if (changeAccountExist(data.data, username, pwd)) {
+                    window.location.href = data.pageUrl
                 } else {
                     alert("账号不存在")
                 }
